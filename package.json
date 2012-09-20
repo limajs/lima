@@ -1,0 +1,16 @@
+{
+  "name": "lima",
+  "version": "0.0.0",
+  "description": "A framework for developing rich web apps using node and dojo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/limajs/lima.git"
+  },
+  "keywords": [
+    "framework",
+    "dojo",
+    "bdd",
+    "cqrs"
+  ],
+  "author": "Simon Crabtree"
+}

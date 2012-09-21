@@ -10,7 +10,8 @@
     "lima": "./bin/lima"
   },
   "dependencies": {
-    "optimist": "*"
+    "optimist": "*",
+    "fs-extra": "*"
   },
   "keywords": [
     "framework",

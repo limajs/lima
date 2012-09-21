@@ -1,8 +1,50 @@
 #!/usr/bin/env node
 var args = require('optimist').argv,
-    path = require('path'),
-    fs = require('fs'),
-    help = 'Usage... \r\n  lima init NewProjectName';
+path = require('path'),
+fs = require('fs-extra'),
+exec = require('child_process').exec,
+help = 'Usage... \r\n  lima init NewProjectName';
+
+function createProject (newProjectName) {
+    console.log('Initializing new lima project called', newProjectName);
+    var newProjectPath = path.join(process.cwd(), newProjectName);
+    fs.mkdirSync(newProjectPath);
+    var pkg = {
+        name: newProjectName,
+        description: '',
+        version: '0.0.0',
+        main: './server.js',
+        dependencies: {
+            lima: '*'
+        },
+        "private": true
+    };
+    var packageJson = JSON.stringify(pkg);
+    fs.writeFileSync(path.join(newProjectPath, 'package.json'), packageJson);
+    fs.writeFileSync(path.join(newProjectPath, 'README.md'), newProjectName);
+    process.chdir(newProjectPath);
+
+    exec('npm install', function(err, stdout, stderr) {
+        if (err) {
+            return console.error(stderr);
+        }
+        if (stdout) {
+            console.log(stdout.replace(/^|\n/g, '\n  '));
+        }
+
+        var boilerplateDir = path.join(newProjectPath, 'node_modules/lima/boilerplate');
+
+        console.log("Copying from", boilerplateDir, "To", newProjectPath);
+        fs.copy(boilerplateDir, newProjectPath, function (err) {
+            if(err) {
+                console.log("Error copying boilerplate", err);
+            } else {
+                console.log("Copied OK");
+                process.exit(0);
+            }
+        });
+    });
+}
 
 if (args._[0] === 'init') {
     var newProjectName = args._[1];
@@ -11,10 +53,8 @@ if (args._[0] === 'init') {
         console.log(help);
         process.exit(0);
     }
-    console.log('Initializing new lima project called', newProjectName);
-    var newProjectPath = path.join(process.cwd(), newProjectName);
-    fs.mkdirSync(newProjectPath);
+    createProject(newProjectName);
+} else {
+    console.log(help);
     process.exit(0);
 }
-
-console.log(help);

@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+var args = require('optimist').argv,
+    path = require('path'),
+    fs = require('fs'),
+    help = 'Usage... \r\n  lima init NewProjectName';
+
+if (args._[0] === 'init') {
+    var newProjectName = args._[1];
+    if(!newProjectName) {
+        console.log('Must provide a new project name to initialize');
+        console.log(help);
+        process.exit(0);
+    }
+    console.log('Initializing new lima project called', newProjectName);
+    var newProjectPath = path.join(process.cwd(), newProjectName);
+    fs.mkdirSync(newProjectPath);
+    process.exit(0);
+}
+
+console.log(help);

@@ -6,6 +6,12 @@
     "type": "git",
     "url": "https://github.com/limajs/lima.git"
   },
+  "bin": {
+    "lima": "./bin/lima"
+  },
+  "dependencies": {
+    "optimist": "*"
+  },
   "keywords": [
     "framework",
     "dojo",

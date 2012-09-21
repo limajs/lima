@@ -1,6 +1,6 @@
 {
   "name": "lima",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A framework for developing rich web apps using node and dojo",
   "repository": {
     "type": "git",

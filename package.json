@@ -11,6 +11,8 @@
     "lima": "./bin/lima"
   },
   "dependencies": {
+    "express": "*",
+    "ejs": "*",
     "optimist": "*",
     "fs-extra": "*"
   },

@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/limajs/lima.git"
   },
+  "main": "lima.js",
   "bin": {
     "lima": "./bin/lima"
   },

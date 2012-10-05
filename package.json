@@ -1,6 +1,6 @@
 {
   "name": "lima",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A framework for developing rich web apps using node and dojo",
   "repository": {
     "type": "git",
@@ -14,7 +14,8 @@
     "express": "*",
     "ejs": "*",
     "optimist": "*",
-    "fs-extra": "*"
+    "fs-extra": "*",
+    "amdefine": "*"
   },
   "keywords": [
     "framework",
